@@ -21,7 +21,7 @@
   </style>
 </head>
 <body>
-  <h2>Dibuja</h2>
+  <h2>Dibuja Círculos</h2>
   <canvas id="drawingCanvas" width="800" height="400"></canvas>
   <script>
     const canvas = document.getElementById('drawingCanvas');
@@ -29,10 +29,9 @@
 
     let isDrawing = false;
 
-   
-    ctx.shadowBlur = 5;   
-    ctx.shadowColor = 'red';  
-    ctx.lineWidth = 5;    
+    ctx.shadowBlur = 15;    
+    ctx.shadowColor = 'cyan'; 
+    ctx.lineWidth = 8;     
 
     canvas.addEventListener('mousedown', (e) => {
       isDrawing = true;
@@ -44,10 +43,14 @@
 
     canvas.addEventListener('mousemove', (e) => {
       if (isDrawing) {
-        ctx.lineTo(e.offsetX, e.offsetY); 
-        ctx.strokeStyle = 'cyan';
-        ctx.lineCap = 'round';
-        ctx.stroke();
+        const x = e.offsetX; 
+        const y = e.offsetY; 
+        ctx.beginPath();
+        ctx.arc(x, y, 8, 0, Math.PI * 2);  
+        ctx.strokeStyle = 'cyan';  
+        ctx.fillStyle = 'cyan';    
+        ctx.fill();                
+        ctx.stroke();              
       }
     });
 
