@@ -12,10 +12,10 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
-      background-color: #ffffff; 
+      background-color: #000000; 
     }
     canvas {
-      border: 2px solid #000;
+      border: 2px solid #ff0000;
       cursor: crosshair;
     }
   </style>
@@ -30,20 +30,23 @@
     let isDrawing = false;
 
    
-    ctx.shadowBlur = 20;   
-    ctx.shadowColor = 'black';  
-    ctx.lineWidth = 10;   
+    ctx.shadowBlur = 5;   
+    ctx.shadowColor = 'red';  
+    ctx.lineWidth = 5;    
 
     canvas.addEventListener('mousedown', (e) => {
       isDrawing = true;
       ctx.beginPath();
       ctx.moveTo(e.offsetX, e.offsetY); 
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
     });
 
     canvas.addEventListener('mousemove', (e) => {
       if (isDrawing) {
         ctx.lineTo(e.offsetX, e.offsetY); 
-        ctx.strokeStyle = 'black'; 
+        ctx.strokeStyle = 'cyan';
+        ctx.lineCap = 'round';
         ctx.stroke();
       }
     });
